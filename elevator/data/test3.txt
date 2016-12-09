@@ -1,0 +1,20 @@
+update 111 2 3 4 7
+update 222 3 4 5 9
+update 333 10 8 6
+update 444 12
+update 555 11 9 7
+update 576 5 6 12
+update 777 10 6 1
+update 888 8 9 10
+update 999 5 4 1
+update 100 3 2
+update 200 7 9 10
+update 300 8 1
+update 400 3
+update 500 8 1
+update 600 9 8 7 6 5 4 3
+status Before
+pickup 14 -14
+pickup 0 20
+step 3
+status After

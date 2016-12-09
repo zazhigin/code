@@ -1,0 +1,7 @@
+update 111 2 3 4 7
+update 222 3 4 5 9
+update 333 10 8 6
+status Before
+pickup 4 -2
+step
+status After
