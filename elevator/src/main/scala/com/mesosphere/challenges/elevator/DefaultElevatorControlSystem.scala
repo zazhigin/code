@@ -74,15 +74,15 @@ class DefaultElevatorControlSystem() extends ElevatorControlSystem {
         elevator.getDirection * sign > 0 &&
           (event.pickupFloor - elevator.floorNumber) * sign >= 0
     }
-    if (f.isEmpty) return (0, null)
+    if (f.isEmpty) (0, null) else {
 
-    // calculate deltas for each filtered elevator
-    val c = for (i <- f) yield
-      (Math.abs(event.pickupFloor - i._2.floorNumber), i)
+      // calculate deltas for each filtered elevator
+      val c = for (i <- f) yield
+        (Math.abs(event.pickupFloor - i._2.floorNumber), i)
 
-    // min by sorting elevators by deltas and getting first
-    val m = c.toSeq.sortBy(_._1).head
-    m._2
+      // min by sorting elevators by deltas and getting first
+      c.toSeq.sortBy(_._1).head._2
+    }
   }
 
   def updateElevatorsByStep(): Unit = {
