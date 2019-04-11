@@ -8,14 +8,12 @@ Domain
 
 Say we have an ecommerce site with products divided into categories like toys, electronics etc. We receive events like product was seen (impression), product page was opened, product was purchased etc.
 
-Task #1
--------
+#### Task #1
 Enrich incoming data with user sessions. Definition of a session: for each user, it contains consecutive events that belong to a single category and are not more than 5 minutes away from each other. Output should look like this (session columns are in bold):<br/>
 eventTime, eventType, category, userId, ..., ​**sessionId, sessionStartTime, sessionEndTime**<br/>
 Implement it using: 1) sql window functions and 2) Spark aggregator.
 
-Task #2
--------
+#### Task #2
 Compute the following statistics:
 1. For each category find median session duration
 2. For each category find # of unique users spending less than 1 min, 1 to 5 mins and more
