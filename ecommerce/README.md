@@ -11,7 +11,7 @@ Say we have an ecommerce site with products divided into categories like toys, e
 Task #1
 -------
 Enrich incoming data with user sessions. Definition of a session: for each user, it contains consecutive events that belong to a single category and are not more than 5 minutes away from each other. Output should look like this (session columns are in bold):
-`eventTime, eventType, category, userId, ..., ​**sessionId, sessionStartTime, sessionEndTime**` Implement it using 1) sql window functions and 2) Spark aggregator.
+eventTime, eventType, category, userId, ..., ​**sessionId, sessionStartTime, sessionEndTime** Implement it using 1) sql window functions and 2) Spark aggregator.
 
 Task #2
 -------
@@ -48,19 +48,19 @@ $ rm -r output
 Execution
 ---------
 
-Starts window duration sessions (Task #1):
+#### Starts window duration sessions (Task #1)
 ```
 $ sbt "runMain com.somefruit.domain.sessions.WindowDurationSessions data/events.csv output 5"
 $ cat output/windowDurationSessions/part*.csv
 ```
 
-Starts median duration statistics (Task #2):
+#### Starts median duration statistics (Task #2)
 ```
 $ sbt "runMain com.somefruit.domain.statistics.MedianDurationStatistics data/duration_sessions.csv output"
 $ cat output/medianDurationStatistics/part*.csv
 ```
 
-Starts median duration statistics (Task #2):
+#### Starts median duration statistics (Task #2)
 ```
 $ sbt "runMain com.somefruit.domain.statistics.UniqueUsersStatistics data/duration_sessions.csv output 1 5"
 $ cat output/uniqueUsersStatistics/lessMin/part*.csv
@@ -69,13 +69,13 @@ $ cat output/uniqueUsersStatistics/grtrMax/part*.csv
 ```
 First CSV file for less than 1 min. Second CSV file for 1 to 5 min. Third CSV file for more than 5 mins.
 
-Starts top products ranked by time spent statistics (Task #2):
+#### Starts top products ranked by time spent statistics (Task #2)
 Starts window product sessions subtask:
 ```
 $ sbt "runMain com.somefruit.domain.sessions.WindowProductSessions data/events.csv output"
 $ cat output/windowProductSessions/part*.csv
 ```
-This creates product type of sessions.
+This creates product sessions.
 
 Starts top products ranked by time spent statistics subtask:
 ```
