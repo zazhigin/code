@@ -10,8 +10,9 @@ Say we have an ecommerce site with products divided into categories like toys, e
 
 Task #1
 -------
-Enrich incoming data with user sessions. Definition of a session: for each user, it contains consecutive events that belong to a single category and are not more than 5 minutes away from each other. Output should look like this (session columns are in bold):
-eventTime, eventType, category, userId, ..., ​**sessionId, sessionStartTime, sessionEndTime** Implement it using 1) sql window functions and 2) Spark aggregator.
+Enrich incoming data with user sessions. Definition of a session: for each user, it contains consecutive events that belong to a single category and are not more than 5 minutes away from each other. Output should look like this (session columns are in bold):<br/>
+eventTime, eventType, category, userId, ..., ​**sessionId, sessionStartTime, sessionEndTime**<br/>
+Implement it using: 1) sql window functions and 2) Spark aggregator.
 
 Task #2
 -------
@@ -20,7 +21,7 @@ Compute the following statistics:
 2. For each category find # of unique users spending less than 1 min, 1 to 5 mins and more
 than 5 mins
 3. For each category find top 10 products ranked by time spent by users on product pages
-  - this may require different type of sessions. For this particular task, session lasts until the user is looking at particular product. When particular user switches to another product the new session starts.
+    - this may require different type of sessions. For this particular task, session lasts until the user is looking at particular product. When particular user switches to another product the new session starts.
 
 Requirements
 ------------
